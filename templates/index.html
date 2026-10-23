@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Home | Robin's Portfolio{% endblock %}
+{% block content %}
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <p class="eyebrow">HELLO, WORLD!</p>
+            <h1>Hi, I'm <span>Robin Hood</span></h1>
+            <p class="hero-subtitle">BCA Student <span class="separator">|</span> Python Developer <span class="separator">|</span> Data Enthusiast</p>
+            <p class="hero-description">I love building simple and useful things with code. This is my personal website built with Flask.</p>
+            <div class="hero-actions">
+                <a class="button button-primary" href="{{ url_for('contact') }}">Get in Touch</a>
+                <a class="button button-outline" href="{{ url_for('about') }}">Learn More</a>
+            </div>
+        </div>
+        <aside class="profile-card">
+            <div class="avatar" aria-hidden="true">RH</div>
+            <h2>Robin Hood</h2>
+            <p>BCA Student · Developer</p>
+            <div class="profile-tags"><span>Python</span><span>HTML/CSS</span><span>Flask</span></div>
+        </aside>
+    </div>
+    <div class="hero-orb orb-one"></div>
+    <div class="hero-orb orb-two"></div>
+</section>
+
+<section class="section container" id="services">
+    <div class="section-heading">
+        <p class="eyebrow">WHAT I'M EXPLORING</p>
+        <h2>My Interests</h2>
+        <p>Things I'm learning and building one step at a time.</p>
+    </div>
+    <div class="service-grid">
+        {% for service in services %}
+        <article class="service-card">
+            <div class="service-icon">{{ service.icon }}</div>
+            <h3>{{ service.title }}</h3>
+            <p>{{ service.description }}</p>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container cta-inner">
+        <div>
+            <p class="eyebrow">HAVE A PROJECT IN MIND?</p>
+            <h2>Let's build something useful.</h2>
+            <p>This demo form uses Flask to process submitted information.</p>
+        </div>
+        <a class="button button-primary" href="{{ url_for('contact') }}">Contact Me</a>
+    </div>
+</section>
+{% endblock %}

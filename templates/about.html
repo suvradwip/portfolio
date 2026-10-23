@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}About | Robin's Portfolio{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <p class="eyebrow">A LITTLE ABOUT ME</p>
+        <h1>Learning by <span>building.</span></h1>
+        <p>I'm a BCA student developing my skills in Python, web development, and data science.</p>
+    </div>
+</section>
+<section class="section container narrow">
+    <article class="content-card">
+        <h2>My learning journey</h2>
+        <p>I'm learning how front-end pages connect to a Python backend. This website is a practice project using Flask routes, HTML templates, Jinja, forms, and responsive CSS.</p>
+        <h3>Current toolkit</h3>
+        <div class="skill-list">
+            <span>Python</span><span>Flask</span><span>HTML</span><span>CSS</span><span>Git (learning)</span>
+        </div>
+        <a class="button button-primary" href="{{ url_for('contact') }}">Send a message</a>
+    </article>
+</section>
+{% endblock %}

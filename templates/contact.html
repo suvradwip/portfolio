@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Contact | Robin's Portfolio{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <p class="eyebrow">GET IN TOUCH</p>
+        <h1>Let's <span>connect.</span></h1>
+        <p>Fill out the form below to see Flask handle your submitted data.</p>
+    </div>
+</section>
+<section class="section container narrow">
+    <div class="content-card">
+        <h2>Contact form</h2>
+        {% if message %}
+            <div class="notice" role="status">{{ message }}</div>
+        {% endif %}
+        <form method="POST" action="{{ url_for('contact') }}" class="contact-form">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" placeholder="Enter your name" required>
+
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+
+            <button class="button button-primary" type="submit">Submit Message</button>
+        </form>
+        <p class="form-note">Demo note: the form shows a confirmation but does not send email or store submissions.</p>
+    </div>
+</section>
+{% endblock %}
