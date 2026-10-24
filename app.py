@@ -25,7 +25,7 @@ services = [
 
 # def get_email(email,user_message,name):
 #     my_email = "robinhoodop513@gmail.com"
-#     app_password = "hsrl xhsp lnrj flij"
+#     app_password = ""
 #     email = request.form.get("email")
 #     message = request.form.get("message")
 #     msg = EmailMessage()
