@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
-import smtplib
-from email.message import EmailMessage
+import os
+import resend
 
 app = Flask(__name__)
 
@@ -23,20 +23,20 @@ services = [
 ]
 
 
-# def get_email(email,user_message,name):
-#     my_email = "robinhoodop513@gmail.com"
-#     app_password = ""
-#     email = request.form.get("email")
-#     message = request.form.get("message")
-#     msg = EmailMessage()
-#     msg["Subject"] = f"Message from website {name}."
-#     msg["From"] = email
-#     msg["To"] = my_email
-#     msg.set_content (user_message)
-#     with smtplib.SMTP_SSL("smtp.gmail.com",465) as server:
-#         server.login(my_email,app_password)
-#         server.send_message(msg)
-#     return ""
+
+
+def get_email(sender, message, name):
+    resend.api_key = os.environ["RESEND_API_KEY"]
+
+    params = {
+        "from": "Your Portfolio <onboarding@resend.dev>",
+        "to": ["robinhoodop513@gmail.com"],
+        "reply_to": sender,
+        "subject": f"Website message from {name}",
+        "text": f"Name: {name}\nMessage: {message}"
+    }
+
+    return resend.Emails.send(params)
 
 
 
@@ -58,7 +58,7 @@ def contact():
 
         if name and email and user_message:
             # Demo only: this validates the form but does not email or save it.i have update this file now it can receive the querry
-            # get_email(email,user_message,name)
+            get_email(email,user_message,name)
             message = f"Thanks, {name}! Your querry form was submitted successfully."
         else:
             message = "Please fill in all fields."
