@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request
+import smtplib
+from email.message import EmailMessage
 
 app = Flask(__name__)
 
